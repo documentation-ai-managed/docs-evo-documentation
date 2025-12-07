@@ -1,0 +1,179 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: EVO Documentation API
+  license:
+    name: MIT
+servers:
+  - url: https://api.evo-docs.com/v1
+paths:
+  /spaces:
+    get:
+      summary: List all documentation spaces
+      operationId: listSpaces
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated array of documentation spaces
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spaces'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new documentation space
+      operationId: createSpace
+      responses:
+        201:
+          description: Space created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /spaces/{spaceId}:
+    get:
+      summary: Retrieve details of a specific documentation space
+      operationId: getSpaceById
+      parameters:
+        - name: spaceId
+          in: path
+          required: true
+          description: The unique identifier of the documentation space
+          schema:
+            type: string
+      responses:
+        200:
+          description: Details of the requested documentation space
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spaces'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update an existing documentation space
+      operationId: updateSpace
+      responses:
+        200:
+          description: Space updated successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /documents:
+    get:
+      summary: List all documents across spaces
+      operationId: listDocuments
+      parameters:
+        - name: limit
+          in: query
+          description: How many documents to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated array of documents
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Documents'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a new document
+      operationId: createDocument
+      responses:
+        201:
+          description: Document created successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Space:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+          enum: [public, private]
+    Spaces:
+      type: array
+      items:
+        $ref: '#/components/schemas/Space'
+    Document:
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        content:
+          type: string
+        space_id:
+          type: integer
+          format: int64
+    Documents:
+      type: array
+      items:
+        $ref: '#/components/schemas/Document'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

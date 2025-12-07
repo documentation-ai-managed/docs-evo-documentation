@@ -1,0 +1,177 @@
+---
+title: API Integration
+description: Connect EVO Documentation with your development tools and workflows
+---
+
+## Integrating EVO Documentation with Your Tools
+
+EVO Documentation provides a comprehensive API that allows you to integrate documentation management into your existing development workflows. Whether you're building custom tools, automating documentation updates, or connecting with CI/CD pipelines, our API offers the flexibility you need.
+
+<Columns cols={3}>
+  <Card title="REST API" icon="code" href="#rest-api">
+    Full REST API for programmatic access to all features.
+  </Card>
+  <Card title="Webhooks" icon="webhook" href="#webhooks">
+    Real-time notifications for documentation events.
+  </Card>
+  <Card title="SDKs" icon="package" href="#sdks">
+    Official SDKs for popular programming languages.
+  </Card>
+</Columns>
+
+## Getting Started with the API
+
+To begin using the EVO API, you'll need an API key and basic understanding of REST principles.
+
+<Steps>
+  <Step title="Generate API Key" icon="key">
+    In your EVO dashboard, navigate to Settings > API Keys and create a new key with appropriate permissions.
+
+    ```bash
+curl -X POST https://api.evo-docs.com/keys \
+  -H "Authorization: Bearer $EVO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"CI/CD Integration","permissions":["read","write"]}'
+    ```
+  </Step>
+  <Step title="Test Connection" icon="check-circle">
+    Verify your API key works by making a simple request to retrieve your user information.
+  </Step>
+  <Step title="Explore Endpoints" icon="search">
+    Review the API documentation to understand available endpoints and their parameters.
+  </Step>
+</Steps>
+
+## Core API Operations
+
+The EVO API supports all major CRUD operations for managing documentation spaces, content, and users.
+
+<Tabs>
+  <Tab title="Spaces" icon="folder">
+    Manage documentation spaces programmatically.
+
+    ```javascript
+// Create a new space
+const response = await fetch('https://api.evo-docs.com/spaces', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'API Documentation',
+    description: 'Comprehensive API reference',
+    visibility: 'public'
+  })
+});
+    ```
+  </Tab>
+  <Tab title="Documents" icon="file-text">
+    Create, update, and manage individual documents.
+
+    ```python
+import requests
+
+headers = {'Authorization': f'Bearer {api_key}'}
+data = {
+    'title': 'Getting Started',
+    'content': '# Welcome to EVO\n\nThis is your first document.',
+    'space_id': space_id
+}
+
+response = requests.post('https://api.evo-docs.com/documents', 
+                        headers=headers, json=data)
+    ```
+  </Tab>
+  <Tab title="Users" icon="users">
+    Manage user accounts and permissions.
+
+    ```bash
+# List space members
+curl -H "Authorization: Bearer $API_KEY" \
+     https://api.evo-docs.com/spaces/$SPACE_ID/members
+    ```
+  </Tab>
+</Tabs>
+
+## Webhook Integration
+
+Set up webhooks to receive real-time notifications when documentation events occur.
+
+<ExpandableGroup>
+  <Expandable title="Available Events" default-open="true">
+    <Expandable title="Document Created" default-open="false">
+      Triggered when a new document is created in any space.
+    </Expandable>
+    <Expandable title="Content Updated" default-open="false">
+      Fires when document content is modified or new versions are published.
+    </Expandable>
+    <Expandable title="Space Membership Changed" default-open="false">
+      Notifies when users are added to or removed from documentation spaces.
+    </Expandable>
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">
+  Use webhooks to automate workflows like sending notifications to Slack or triggering documentation builds in your CI/CD pipeline.
+</Callout>
+
+## Official SDKs
+
+We provide official SDKs for popular programming languages to simplify integration.
+
+<CodeGroup tabs="JavaScript,Python,Go">
+  ```javascript
+// Install: npm install evo-docs-sdk
+const { EVODocs } = require('evo-docs-sdk');
+
+const client = new EVODocs({ apiKey: 'your-key' });
+const spaces = await client.spaces.list();
+  ```
+  ```python
+# Install: pip install evo-docs-sdk
+from evo_docs import EVODocs
+
+client = EVODocs(api_key='your-key')
+spaces = client.spaces.list()
+  ```
+  ```go
+// Install: go get github.com/evo-docs/sdk-go
+package main
+
+import (
+    "github.com/evo-docs/sdk-go"
+)
+
+func main() {
+    client := evo.NewClient("your-api-key")
+    spaces, _ := client.ListSpaces()
+}
+  ```
+</CodeGroup>
+
+## Common Integration Patterns
+
+Learn how other teams are using EVO's API to enhance their documentation workflows.
+
+- **CI/CD Integration**: Automatically update API documentation when code changes are deployed.
+- **Slack Notifications**: Send real-time updates to team channels when documentation is modified.
+- **Content Sync**: Keep documentation synchronized across multiple platforms and repositories.
+- **Automated Testing**: Validate documentation links and content as part of your test suite.
+- **Analytics Integration**: Send usage metrics to your analytics platform for reporting.
+
+<Callout kind="info">
+  Check our integrations directory for pre-built connectors and community-contributed tools.
+</Callout>
+
+## Error Handling and Best Practices
+
+Build robust integrations by implementing proper error handling and following API best practices.
+
+- **Rate Limiting**: Respect API rate limits (100 requests per minute for most endpoints).
+- **Error Responses**: Handle HTTP error codes appropriately (400 for bad requests, 401 for authentication issues).
+- **Idempotency**: Use idempotent operations where possible to avoid duplicate actions.
+- **Pagination**: Implement pagination for list endpoints to handle large result sets.
+- **Authentication**: Rotate API keys regularly and use the minimum required permissions.
+
+By leveraging EVO's comprehensive API, you can create powerful integrations that enhance your team's documentation workflow and ensure your documentation stays current and accurate.

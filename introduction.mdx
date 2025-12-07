@@ -1,0 +1,100 @@
+---
+title: Introduction
+description: Overview of EVO Documentation and its core capabilities
+---
+
+## Getting Started with EVO Documentation
+
+EVO Documentation provides a centralized platform for organizing and managing all your project documentation. Whether you're building APIs, maintaining product guides, or collaborating on technical content, EVO offers a streamlined space to keep everything organized and accessible. This documentation will guide you through setting up your workspace and leveraging EVO's powerful features.
+
+<Columns cols={3}>
+  <Card title="Quick Setup" icon="zap" href="/setup">
+    Get started in minutes with our guided setup process.
+  </Card>
+  <Card title="API Integration" icon="code" href="/api-integration">
+    Connect your tools and automate documentation workflows.
+  </Card>
+  <Card title="Features Overview" icon="star" href="/features">
+    Explore core capabilities and advanced functionality.
+  </Card>
+</Columns>
+
+## Key Features
+
+EVO Documentation stands out with its intuitive interface and robust feature set. The platform supports multiple documentation formats, real-time collaboration, and seamless integration with popular development tools. You can create structured documentation spaces, manage permissions, and track changes with comprehensive version control.
+
+<Steps>
+  <Step title="Create Your Space" icon="folder">
+    Start by creating a dedicated documentation space for your project. This provides a structured environment where you can organize content by topics, versions, or teams.
+  </Step>
+  <Step title="Invite Team Members" icon="users">
+    Collaborate effectively by inviting team members with appropriate permissions. EVO supports role-based access control, ensuring the right people have the right level of access.
+  </Step>
+  <Step title="Import Existing Content" icon="upload">
+    Bring your existing documentation into EVO using our import tools. We support various formats including Markdown, HTML, and popular documentation platforms.
+  </Step>
+  <Step title="Customize and Publish" icon="settings">
+    Tailor your documentation to match your brand and publish it instantly. EVO provides customizable themes, search functionality, and analytics to track engagement.
+  </Step>
+</Steps>
+
+## Platform Benefits
+
+What makes EVO Documentation the ideal choice for your documentation needs? Our platform offers unparalleled ease of use combined with enterprise-grade features. With support for multiple languages, advanced search capabilities, and robust API integrations, you can build a comprehensive knowledge base that grows with your organization.
+
+<Tabs>
+  <Tab title="Developers" icon="code">
+    As a developer, you'll appreciate EVO's API-first approach and extensive integration options. Connect your CI/CD pipelines, version control systems, and development tools seamlessly.
+
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+const evo = require('evo-docs');
+const space = await evo.createSpace({
+  name: 'My Project Docs',
+  description: 'Documentation for our main project'
+});
+```
+      ```python
+from evo_docs import EVODocs
+evo = EVODocs(api_key='your-key')
+space = evo.create_space(name='My Project Docs', description='Main project documentation')
+```
+    </CodeGroup>
+  </Tab>
+  <Tab title="Product Managers" icon="users">
+    Product managers can leverage EVO to maintain up-to-date product documentation, release notes, and user guides. Our collaboration features make it easy to gather feedback and keep documentation current.
+
+    Track feature releases and maintain comprehensive product documentation with our structured templates and approval workflows.
+  </Tab>
+  <Tab title="Technical Writers" icon="file-text">
+    Technical writers will find EVO's rich editing tools and content management features invaluable. Create reusable components, manage translations, and ensure consistency across all documentation.
+
+    <Expandable title="Content Management Tips" default-open="false">
+      Use our content templates to maintain consistency, leverage reusable components for common sections, and implement approval workflows to ensure quality.
+    </Expandable>
+  </Tab>
+</Tabs>
+
+## Getting Help
+
+If you encounter any issues or need assistance, EVO Documentation provides comprehensive support resources. Our knowledge base contains detailed guides, video tutorials, and troubleshooting tips. For personalized help, reach out to our support team.
+
+<Callout kind="info">
+  New to EVO? Check out our interactive onboarding tour available in your dashboard.
+</Callout>
+
+<ExpandableGroup>
+  <Expandable title="Common Questions" default-open="true">
+    <Expandable title="How do I import existing documentation?" default-open="false">
+      You can import documentation from various sources including GitHub repositories, Confluence spaces, and local files. Use the import wizard in your dashboard.
+    </Expandable>
+    <Expandable title="What integrations are available?" default-open="false">
+      EVO integrates with popular tools like Slack, Jira, GitHub, and many CI/CD platforms. Check our integrations page for the complete list.
+    </Expandable>
+    <Expandable title="Is my data secure?" default-open="false">
+      Yes, EVO employs enterprise-grade security measures including encryption at rest, regular security audits, and compliance with industry standards like SOC 2.
+    </Expandable>
+  </Expandable>
+</ExpandableGroup>
+
+EVO Documentation empowers teams to create, manage, and share knowledge effectively. Whether you're documenting APIs, maintaining product guides, or building a comprehensive knowledge base, EVO provides the tools and flexibility you need to succeed. Get started today and transform how your team manages documentation.

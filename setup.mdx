@@ -1,0 +1,114 @@
+---
+title: Setup Guide
+description: Step-by-step instructions for setting up your EVO Documentation workspace
+---
+
+## Setting Up Your EVO Documentation Workspace
+
+Getting started with EVO Documentation is straightforward and takes just a few minutes. This guide will walk you through creating your account, setting up your first documentation space, and configuring basic settings to get you productive quickly.
+
+<Steps>
+  <Step title="Create Your Account" icon="user">
+    Visit the EVO Documentation website and sign up for a free account. You can use your email address or sign in with Google, GitHub, or other supported providers.
+
+    ```bash
+curl -X POST https://api.evo-docs.com/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your-email@example.com","password":"secure-password"}'
+    ```
+  </Step>
+  <Step title="Verify Your Email" icon="mail">
+    Check your email for a verification link from EVO. Click the link to confirm your account and activate your workspace.
+  </Step>
+  <Step title="Set Up Your Profile" icon="settings">
+    Complete your profile by adding your name, profile picture, and preferred settings. This helps team members identify you in collaborative spaces.
+  </Step>
+  <Step title="Create Your First Space" icon="folder">
+    Create a documentation space for your project. Choose a descriptive name and add team members to start collaborating immediately.
+
+    <Tabs>
+      <Tab title="Web Interface" icon="monitor">
+        In your dashboard, click "Create Space" and fill in the details. You can set permissions and invite members right away.
+      </Tab>
+      <Tab title="API" icon="code">
+        ```javascript
+const space = await evo.spaces.create({
+  name: 'Project Alpha Docs',
+  description: 'Documentation for Project Alpha',
+  visibility: 'private'
+});
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+</Steps>
+
+## Configuring Your Workspace
+
+Once your basic setup is complete, customize your workspace to match your team's workflow and branding preferences.
+
+<ExpandableGroup>
+  <Expandable title="Workspace Settings" default-open="true">
+    <Expandable title="Branding and Themes" default-open="false">
+      Customize the appearance of your documentation spaces with your company colors, logo, and preferred theme. This ensures consistency across all your documentation.
+    </Expandable>
+    <Expandable title="User Permissions" default-open="false">
+      Set up role-based access control to manage who can view, edit, or administer your documentation spaces. Choose from predefined roles or create custom permissions.
+    </Expandable>
+    <Expandable title="Notifications" default-open="false">
+      Configure email and in-app notifications for important events like new comments, space invites, or content updates.
+    </Expandable>
+  </Expandable>
+</ExpandableGroup>
+
+## Integrating with Your Tools
+
+EVO Documentation integrates seamlessly with popular development and productivity tools to streamline your workflow.
+
+<Columns cols={2}>
+  <Card title="GitHub Integration" icon="github" href="#github-setup">
+    Connect your GitHub repositories to sync documentation with your code.
+  </Card>
+  <Card title="Slack Integration" icon="message-square" href="#slack-setup">
+    Get notifications and updates directly in your Slack channels.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Start with one or two key integrations first, then expand as your team becomes more familiar with EVO's capabilities.
+</Callout>
+
+## Importing Existing Documentation
+
+Don't start from scratch - import your existing documentation to get up and running faster.
+
+<CodeGroup tabs="Markdown,Confluence,GitHub">
+  ```bash
+# Import Markdown files
+evo import --source ./docs --format markdown --space "My Project"
+  ```
+  ```bash
+# Import from Confluence
+evo import --source https://company.atlassian.net/wiki --space "Company Wiki" --token $CONFLUENCE_TOKEN
+  ```
+  ```bash
+# Import from GitHub repository
+evo import --source https://github.com/company/repo --path docs/ --space "API Docs"
+  ```
+</CodeGroup>
+
+## Best Practices for Setup
+
+Follow these recommendations to ensure your EVO Documentation workspace is set up for long-term success.
+
+- **Organize by Project**: Create separate spaces for different projects or products to maintain clear boundaries.
+- **Set Clear Permissions**: Define roles and permissions early to prevent access issues as your team grows.
+- **Use Templates**: Leverage EVO's built-in templates for common documentation types like API references and user guides.
+- **Enable Version Control**: Turn on versioning to track changes and maintain a history of your documentation.
+- **Schedule Reviews**: Set up regular review cycles to keep documentation current and accurate.
+
+<Callout kind="info">
+  Remember that your documentation setup can evolve as your needs change. Start simple and add complexity gradually.
+</Callout>
+
+By following this guide, you'll have a fully functional EVO Documentation workspace that supports your team's collaboration and knowledge sharing needs. The platform's flexibility ensures it can grow with your organization, adapting to new requirements and scaling to support larger teams.

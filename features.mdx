@@ -1,0 +1,165 @@
+---
+title: Features Overview
+description: Explore the core features and capabilities of EVO Documentation
+---
+
+## EVO Documentation Features
+
+EVO Documentation offers a comprehensive suite of features designed to make documentation management efficient, collaborative, and scalable. From simple knowledge bases to complex multi-product documentation sites, EVO provides the tools you need.
+
+<Columns cols={2}>
+  <Card title="Real-time Collaboration" icon="users" href="#collaboration">
+    Work together seamlessly with live editing and commenting.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="#versioning">
+    Track changes and maintain documentation history.
+  </Card>
+  <Card title="Advanced Search" icon="search" href="#search">
+    Find information quickly with powerful search capabilities.
+  </Card>
+  <Card title="API Integration" icon="code" href="#api">
+    Connect with your development tools and workflows.
+  </Card>
+</Columns>
+
+## Real-time Collaboration
+
+EVO's collaboration features enable teams to work together effectively, regardless of location or time zone.
+
+<Steps>
+  <Step title="Live Editing" icon="edit">
+    Multiple users can edit documents simultaneously with changes appearing in real-time.
+  </Step>
+  <Step title="Comments and Discussions" icon="message-square">
+    Add comments to specific sections and have threaded discussions.
+  </Step>
+  <Step title="Review Workflows" icon="check-circle">
+    Set up approval processes for critical documentation changes.
+  </Step>
+  <Step title="Notifications" icon="bell">
+    Get notified of changes, mentions, and review requests.
+  </Step>
+</Steps>
+
+## Version Control and History
+
+Maintain a complete history of your documentation with robust versioning capabilities.
+
+<Tabs>
+  <Tab title="Automatic Versioning" icon="clock">
+    Every change is automatically versioned, allowing you to track the evolution of your documentation.
+
+    ```javascript
+// View document history
+const history = await evo.documents.getHistory(documentId);
+console.log(`Document has ${history.length} versions`);
+    ```
+  </Tab>
+  <Tab title="Revert Changes" icon="refresh-cw">
+    Easily revert to previous versions if needed, with detailed change logs.
+  </Tab>
+  <Tab title="Branching" icon="git-branch">
+    Create branches for major updates or experimental content.
+  </Tab>
+</Tabs>
+
+## Advanced Search and Discovery
+
+Find information quickly with EVO's powerful search capabilities.
+
+<ExpandableGroup>
+  <Expandable title="Search Features" default-open="true">
+    <Expandable title="Full-text Search" default-open="false">
+      Search across all content, including code snippets and metadata.
+    </Expandable>
+    <Expandable title="Filters and Facets" default-open="false">
+      Narrow results by space, author, date, or custom tags.
+    </Expandable>
+    <Expandable title="Smart Suggestions" default-open="false">
+      Get relevant suggestions as you type, including related content.
+    </Expandable>
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">
+  Use advanced search operators like `author:john` or `modified:since-1week` to find specific content quickly.
+</Callout>
+
+## Content Management
+
+Organize and manage your documentation with flexible content management tools.
+
+<CodeGroup tabs="Organize,Template,Publish">
+  ```javascript
+// Organize content by spaces and folders
+const space = await evo.spaces.create({
+  name: 'Product Documentation',
+  folders: ['Getting Started', 'API Reference', 'Tutorials']
+});
+  ```
+  ```javascript
+// Use templates for consistency
+const template = await evo.templates.create({
+  name: 'API Endpoint',
+  fields: ['method', 'endpoint', 'description', 'parameters']
+});
+  ```
+  ```javascript
+// Publish with custom domains
+const publication = await evo.spaces.publish(spaceId, {
+  domain: 'docs.mycompany.com',
+  theme: 'corporate'
+});
+  ```
+</CodeGroup>
+
+## Security and Permissions
+
+Keep your documentation secure with granular permission controls.
+
+- **Role-based Access Control**: Assign roles like Viewer, Editor, and Admin to control access.
+- **Space-level Permissions**: Set permissions per documentation space or folder.
+- **Audit Logs**: Track all access and changes for compliance.
+- **SSO Integration**: Connect with your identity provider for seamless authentication.
+
+<Callout kind="info">
+  EVO complies with industry standards like SOC 2 and GDPR for enterprise security requirements.
+</Callout>
+
+## Analytics and Insights
+
+Understand how your documentation is being used with built-in analytics.
+
+| Metric | Description | Use Case |
+|--------|-------------|----------|
+| Page Views | Number of times a page is viewed | Identify popular content |
+| Search Queries | Terms users search for | Improve discoverability |
+| Time on Page | How long users spend reading | Measure content effectiveness |
+| Top Referrers | Where traffic comes from | Track integration success |
+
+## Integrations and Extensibility
+
+Extend EVO's capabilities with integrations and custom development.
+
+<Expandable title="Popular Integrations" default-open="false">
+  - **GitHub**: Sync documentation with code repositories
+  - **Slack**: Get notifications and search from Slack
+  - **Jira**: Link documentation to project tickets
+  - **Figma**: Embed design files in documentation
+  - **Zapier**: Connect with 2000+ apps
+</Expandable>
+
+## Customization Options
+
+Tailor EVO to match your brand and workflow requirements.
+
+- **Custom Themes**: Create branded documentation sites
+- **Custom Fields**: Add metadata fields specific to your needs
+- **Workflow Automation**: Set up custom approval and publishing workflows
+- **API Extensions**: Build custom integrations using our API
+
+<Callout kind="success">
+  With EVO's extensive customization options, you can create a documentation platform that perfectly fits your organization's unique needs.
+</Callout>
+
+EVO Documentation combines powerful features with an intuitive interface to make documentation management effortless. Whether you're a small team or a large enterprise, EVO scales to meet your needs while maintaining simplicity for everyday use.
